@@ -89,3 +89,22 @@ def fib(request):
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
 		return HttpResponse("YOU FUCKED UP, TRY AGAIN!")
+
+
+@csrf_exempt
+def molecule(request):
+	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
+	log = []
+	if request.method == "GET":
+		try:
+			
+
+			print("dingus dongus")
+		except Exception as e:
+			exc_type, exc_obj, exc_tb = sys.exc_info()
+			other = sys.exc_info()[0].__name__
+			fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+			errorType = str(exc_type)
+			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
+	else:
+		return HttpResponse("YOU FUCKED UP, TRY AGAIN!")		
