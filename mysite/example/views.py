@@ -58,7 +58,7 @@ def example_post(request):
 def fib(request):
 	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
 	log = []
-	if request.method == "POST":
+	if request.method == "GET":
 		try:
 			data = request.POST["data"]
 			received = json.loads(data)
@@ -88,4 +88,4 @@ def fib(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("ONLY POST MALONES")
+		return HttpResponse("YOU FUCKED UP, TRY AGAIN!")
