@@ -21,7 +21,7 @@ def example_get(request, var_a, var_b):
 		return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 
 @csrf_exempt
-def fib(request):
+def example_post(request):
 	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
 	log = []
 	if request.method == "POST":
@@ -45,6 +45,42 @@ def fib(request):
 				fibno = fibno-addno
 
 			return JsonResponse({"fig":numarray})
+		except Exception as e:
+			exc_type, exc_obj, exc_tb = sys.exc_info()
+			other = sys.exc_info()[0].__name__
+			fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+			errorType = str(exc_type)
+			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
+	else:
+		return HttpResponse("ONLY POST MALONES")
+
+@csrf_exempt
+def fib(request):
+	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
+	log = []
+	if request.method == "POST":
+		try:
+			data = request.POST["data"]
+			received = json.loads(data)
+			jsob.update(received)
+
+			startNumber = int(jsob["startNumber"])
+			length 		= int(jsob["length"])
+			loop 		= range(length)
+
+			numarray 	= []
+
+			fibno		= startNumber
+			addno 		= 1
+
+			for l in loop:
+				numarray.append(fibno)
+				fibno = fibno+addno
+				addno = fibno-addno
+
+			return JsonResponse({"fig":numarray})
+
+			print("dingus dongus")
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__
