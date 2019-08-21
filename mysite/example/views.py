@@ -22,29 +22,19 @@ def example_get(request, var_a, var_b):
 
 @csrf_exempt
 def example_post(request):
-	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
 	log = []
 	if request.method == "POST":
 		try:
+			jsob = {"demo": "12345", "var": "The Count s:"}
 			data = request.POST["data"]
 			received = json.loads(data)
 			jsob.update(received)
+			index = 0
+			for i in jsob["demo"]:
+				index += 1
+			index = jsob["var"]+str(index)
 
-			startNumber = int(json["startNumber"])
-			length 		= int(jsob["length"])
-			loop 		= range(length)
-
-			numarray 	= []
-
-			fibno		= startNumber
-			addno 		= 1
-
-			for l in loop:
-				numarray.append(fibno)
-				fibno = fibno+addno
-				fibno = fibno-addno
-
-			return JsonResponse({"fig":numarray})
+			return JsonResponse({"count":index})
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__
@@ -52,7 +42,7 @@ def example_post(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("ONLY POST MALONES")
+		return HttpResponse("<h2>ONLY POST MALONES</h2>")
 
 @csrf_exempt
 def fib(request):
@@ -60,7 +50,7 @@ def fib(request):
 	log = []
 	if request.method == "GET":
 		try:
-			data = request.GET["data"]
+			data = request.POST["data"]
 			received = json.loads(data)
 			jsob.update(received)
 
