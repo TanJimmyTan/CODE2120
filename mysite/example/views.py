@@ -53,16 +53,15 @@ def fib(request):
 			data = request.POST["data"]
 			received = json.loads(data)
 			jsob.update(received)
+			#Anything above this line is essential
 
 			startNumber = int(jsob["startNumber"])
-			length 		= int(jsob["length"])
-			loop 		= range(length)
+			length = int(jsob["length"])
+			loop = range(length)
 
-			numarray 	= []
-
-			fibno		= startNumber
-			addno 		= 1
-
+			numarray = []
+			fibno = startNumber
+			addno = 1
 			for l in loop:
 				numarray.append(fibno)
 				fibno = fibno+addno
