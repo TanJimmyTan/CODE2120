@@ -19,7 +19,7 @@ from django.urls import include, path, re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'example_get/<str:var_a>/<int:var_b>',  views.example_get),
-    path(r'e/', include('example.urls')),
+    path(r'example/', include('example.urls')),
     path(r'monky/', include('monky.urls')),
     ###Hello hello mello shello
 
