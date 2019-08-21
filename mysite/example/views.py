@@ -48,7 +48,7 @@ def example_post(request):
 def fib(request):
 	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
 	log = []
-	if request.method == "GET":
+	if request.method == "POST":
 		try:
 			data = request.POST["data"]
 			received = json.loads(data)
@@ -68,8 +68,6 @@ def fib(request):
 				addno = fibno-addno
 
 			return JsonResponse({"fig":numarray})
-
-			print("dingus dongus")
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__
