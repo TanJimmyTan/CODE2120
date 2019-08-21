@@ -60,7 +60,7 @@ def fib(request):
 	log = []
 	if request.method == "GET":
 		try:
-			data = request.POST["data"]
+			data = request.GET["data"]
 			received = json.loads(data)
 			jsob.update(received)
 
