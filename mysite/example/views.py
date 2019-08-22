@@ -75,10 +75,10 @@ def fib(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("SOMETHINGS NOT RIGHT")
+		return HttpResponse("I don't feel so good..")
 
 @csrf_exempt
-def leg(request):
+def fib(request):
 	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
 	log = []
 	if request.method == "POST":
@@ -108,4 +108,4 @@ def leg(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("SOMETHINGS NOT RIGHT")
+		return HttpResponse("bbobbo")
