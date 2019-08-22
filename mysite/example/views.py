@@ -78,7 +78,7 @@ def fib(request):
 		return HttpResponse("I don't feel so good..")
 
 @csrf_exempt
-def fib(request):
+def leg(request):
 	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
 	log = []
 	if request.method == "POST":
