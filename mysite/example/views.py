@@ -67,7 +67,7 @@ def fib(request):
 				fibno = fibno+addno
 				addno = fibno-addno
 
-			return JsonResponse({"fig":numarray})
+			return JsonResponse({"fib":numarray})
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__
@@ -75,7 +75,17 @@ def fib(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("SOMETHINGS NOT RIGHT")
+		for fizzbuzz in range(50):
+				if fizzbuzz % 3 == 0 and fizzbuzz % 5 == 0:
+					print("dingdong")
+					continue
+				elif fizzbuzz % 3 == 0:
+					print("ding")
+					continue
+				elif fizzbuzz % 5 == 0:
+					print("dong")
+					continue
+				print(dingdong)
 
 
 @csrf_exempt
