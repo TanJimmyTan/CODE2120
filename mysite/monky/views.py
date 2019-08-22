@@ -25,7 +25,7 @@ def example_post(request):
 	log = []
 	if request.method == "POST":
 		try:
-			jsob = {"demo": "12345", "var": "The Count s:"}
+			jsob = {"demo": "12345", "var": "The Count is:"}
 			data = request.POST["data"]
 			received = json.loads(data)
 			jsob.update(received)
@@ -84,21 +84,7 @@ def humbug(request):
 	log = []
 	if request.method == "POST":
 		try:
-			data = request.POST["data"]
-			received = json.loads(data)
-			jsob.update(received)
-
-			for fizzbuzz in range(50):
-				if fizzbuzz % 3 == 0 and fizzbuzz % 5 == 0:
-					print("dingdong")
-					continue
-				elif fizzbuzz % 3 == 0:
-					print("ding")
-					continue
-				elif fizzbuzz % 5 == 0:
-					print("dong")
-					continue
-				print(dingdong)
+			print(jsob)
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__

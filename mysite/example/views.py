@@ -75,17 +75,7 @@ def fib(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		for fizzbuzz in range(50):
-				if fizzbuzz % 3 == 0 and fizzbuzz % 5 == 0:
-					print("dingdong")
-					continue
-				elif fizzbuzz % 3 == 0:
-					print("ding")
-					continue
-				elif fizzbuzz % 5 == 0:
-					print("dong")
-					continue
-				print(dingdong)
+		return HttpResponse("SOMETHINGS NOT RIGHT")
 
 
 @csrf_exempt
