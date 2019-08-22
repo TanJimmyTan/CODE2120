@@ -98,7 +98,7 @@ def leg(request):
 			for l in loop:
 				numarray.append(fibno)
 				fibno = fibno+addno
-				addno = fibno-addno
+				addno = fibno
 
 			return JsonResponse({"fib":numarray})
 		except Exception as e:
@@ -108,4 +108,4 @@ def leg(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("bbobbo")
+		return HttpResponse("<h2>I don't feel so good..</h2>")
