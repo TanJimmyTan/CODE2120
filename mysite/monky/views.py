@@ -79,14 +79,26 @@ def fib(request):
 
 
 @csrf_exempt
-def molecule(request):
+def humbug(request):
 	jsob = {"startNumber": 0, "length": 10} #DEFAULTS
 	log = []
-	if request.method == "GET":
+	if request.method == "POST":
 		try:
-			
+			data = request.POST["data"]
+			received = json.loads(data)
+			jsob.update(received)
 
-			print("dingus dongus")
+			for fizzbuzz in range(50):
+				if fizzbuzz % 3 == 0 and fizzbuzz % 5 == 0:
+					print("dingdong")
+					continue
+				elif fizzbuzz % 3 == 0:
+					print("ding")
+					continue
+				elif fizzbuzz % 5 == 0:
+					print("dong")
+					continue
+				print(dingdong)
 		except Exception as e:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			other = sys.exc_info()[0].__name__
@@ -94,4 +106,4 @@ def molecule(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("SOMETHINGS NOT RIGHT")		
+		return HttpResponse("SOMETHINGS NOT RIGHT")
