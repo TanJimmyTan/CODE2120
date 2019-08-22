@@ -75,7 +75,7 @@ def fib(request):
 			errorType = str(exc_type)
 			return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
-		return HttpResponse("I don't feel so good..")
+		return HttpResponse("<h2>I don't feel so good..</h2>")
 
 @csrf_exempt
 def leg(request):
